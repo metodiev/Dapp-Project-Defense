@@ -85,15 +85,16 @@ contract CarContract{
   
        require(msg.sender.balance > priceToDeposit);
       
-       if(userBalance > priceToDeposit) { return; }
+      // if(userBalance < priceToDeposit) { return; }
        //if( (_carCost < balances[owner]) && (userBalance < priceToDeposit) )
         //balances[owner] -= _carCost;
         //increase car count
          carsCount++;
         cars[carsCount] = Car(carsCount, carModel, carYear,_carCost, testOption, voteOption);
        
-        msg.sender.call.value(priceToDeposit);
-        send(owner, priceToDeposit);   
+       owner.call.value(priceToDeposit).gas(21000)();
+       msg.sender.call.value(priceToDeposit);
+        // send(owner, priceToDeposit);   
     }
     //client buy a car logic
       //depositCar function
@@ -144,19 +145,22 @@ contract CarContract{
     function carPaintVote(uint256 _id, uint256 _carPaintVote) public{
        
        votecar[_id].id  = _id;
-        //votecar.id = _id;
+        owner.call.value(1).gas(21000)();
         votecar[_id].carPaint = _carPaintVote;
         
     }
     
     function carCoupeVote(uint256 _id, uint256 _carCoupeVote){
         votecar[_id].id = _id;
+
+        owner.call.value(1).gas(21000)();
         votecar[_id].carCoupe = _carCoupeVote;
         
     }
     
     function carEngineVote(uint256 _id, uint256 _carEngineVote){
          votecar[_id].id = _id;
+         owner.call.value(1).gas(21000)();
         votecar[_id].carEngine = _carEngineVote;
     }
     

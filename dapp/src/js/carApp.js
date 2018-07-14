@@ -31,6 +31,7 @@ App = {
       App.voteCoupe();
       App.voteEngine();
       App.votePaint();
+      App.carCatalogue();
       return App.carBuy();
     });
   }
@@ -72,13 +73,16 @@ App = {
       var carTest = document.getElementById("cartest").value;
       var carVoted = document.getElementById("carvote").value;
 
-      if ((isNaN(carYear) && isNaN(carPrice))) {
+      //check for symbols
+      var symbolStr = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+      alert(symbolStr.test(carModel))
+      if ((isNaN(carYear) && isNaN(carPrice) )  || (symbolStr.test(carModel))) {
         alert("Invalid Input");
         return;
       }
 
       carInstance.addNewCar(carModel, carYear, carPrice, carTest, carVoted);
-      App.count();
+      
       App.carBuy();
     });
   },
@@ -233,6 +237,52 @@ App = {
         });
       }
     });
+  },
+
+  carCatalogue: function(){
+
+    var carInstance;
+    var loader = $("#loader");
+    var content = $("#content");
+
+    loader.show();
+    content.hide();
+
+    // Load contract data
+    App.contracts.CarContract.deployed().then(function (instance) {
+      carInstance = instance;
+      //vote coupe logic
+    
+    
+      //carCoupeVote(uint256 _id, uint256 _carCoupeVote)
+      carInstance.carCoupeVote(selectedCar, _carCoupeVote);
+      console.log(carInstance);
+      return carInstance.carsCount();
+    }).then(function (carsCount) {
+      var carResults = $("#carResults");
+      carResults.empty();
+
+      var carCoupeSelect = $('#carCoupeSelect');
+      carCoupeSelect.empty();
+
+      for (var i = 1; i <= carsCount; i++) {
+        carInstance.cars(i).then(function (car) {
+          var id = car[0];
+          var model = car[1];
+          var modelYear = car[2];
+          alert(voteCount);
+          // Render candidate Result
+          var carTemplate = "<tr><th>" + id + "</th><td>" + model + "</td><td>" + modelYear  + "</td></tr>";
+          carResults.append(carTemplate);
+
+          // Render car option
+          var carOption = "<option value='" + id + "' >" + name + "</ option>"
+          carCoupeSelect.append(carOption);
+        });
+      }
+    });
+  
+
   },
   voteEngine: function () {
     var carInstance;
