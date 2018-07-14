@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Car shop second Hand</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/style_dapp.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Car shop second Hand</a>
+      </div>
+      <div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <a href="#sell_car">Sell Car</a>
+            </li>
+            <li>
+              <a href="#buy_car">Buy Car</a>
+            </li>
+            <li>
+              <a href="car_catalogue.html">Car Catalogue</a>
+            </li>
+            <li>
+                <a href="vote_car.html">Vote Car</a>
+              </li>
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="home" class="container-fluid">
+    <h1>Home</h1>
+    <p>Car shop for second hand cars...... info</p>
+
+  </div>
+  <div id="sell_car" class="container-fluid">
+    <h1>Sell Car</h1>
+    <p>
+      <label> Car Model:</label>
+      <input class="input-css" type="text" id="carmodel" name="cmodel">
+    </p>
+    <p>
+      <label> Car Model Year:</label>
+      <input class="input-css" type="text" id="caryear" name="cyear">
+    </p>
+    <p>
+      <label> Car Price:</label>
+      <input class="input-css" type="text" id="carprice" name="cprice">
+    </p>
+    <p>
+      <label>Car Test by client Option: </label>
+      <input class="input-css" type="text" id="cartest" name="ctest">
+    </p>
+    <p>
+      <label> Car can be voted:</label>
+      <input class="input-css" type="text" id="carvote" name="cvote">
+    </p>
+    <input class="butn" type="submit" onclick="App.carSell()" value="Submit">
+
+  </div>
+  <div id="buy_car" class="container-fluid">
+    <h1>Buy Car</h1>
+    <!-- <p>
+      <label> Car Model:</label>
+      <input class="input-css" type="text" id="carmodel" name="cmodel">
+    </p>
+    <p>
+      <label> Car Model Year:</label>
+      <input class="input-css" type="text" id="caryear" name="cyear">
+    </p>
+    <p>
+      <label> Car Price:</label>
+      <input class="input-css" type="text" id="carprice" name="cprice">
+    </p>
+    <p>
+      <label>Car Test by client Option: </label>
+      <input type="checkbox" class="input-css" type="text" id="cartest" name="ctest">
+    </p>
+    <p>
+      <label> Car can be voted:</label>
+      <input class="input-css" type="checkbox" id="carvote" name="cvote">
+    </p> -->
+    <p>
+        <label for="carSelect">Select A Car</label>
+        <select class="form-control" id="carSelect">
+        </select>
+      </p>
+      <p>
+          <label>Deposit Car: </label>
+          <input type="checkbox" class="input-css" type="text" id="depositcar" name="cdeposit">
+        </p>
+        <p>
+            <label>Buy a Car: </label>
+            <input type="checkbox" class="input-css" type="text" id="buycar" name="cbuy">
+          </p>
+
+    <input class="butn" type="submit" onclick="App.orderCar()" value="Submit">
+    
+  </div>
+  <!-- <input type='file' id='someFileInputId'>
+  <input class="butn" type="submit" onclick="App.uploadIpfs()" value="Submit">
+  <!-- <img src="https://ipfs.io/ipfs/QmX7mna7G3BLx2UCdAHviaDastbnvLiVmM2pQ5azBa1H7D" 
+alt="Cheetah!" /> -->
+
+<img id='output'> -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/web3.min.js"></script>
+<script src="js/truffle-contract.js"></script>
+<script src="js/app.js"></script>
+
+
+</body>
+
+</html>
